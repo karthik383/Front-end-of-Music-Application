@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<style>
+body {
+  background-color: #f2f2f2;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  color: #333333;
+}
+
+#songs-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.song-item {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  width: 300px;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.song-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
+
+.song-item h2 {
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #333333;
+}
+
+.song-item p {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+  text-align: center;
+  color: #666666;
+}
+
+.song-item img {
+  max-width: 100%;
+  max-height: 200px;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .song-item {
+    width: 90%;
+  }
+}
+
+@media (max-width: 576px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .song-item {
+    width: 100%;
+  }
+}
+</style>
+<body>
+  <div class="container">
+    <button><a href = "tophits.html">TopHits</a></button><br/>
+    <button><a href = "classichits.html">ClassicHits</a></button><br/>
+    <button><a href  ="pops.html">TopPlayLists</a></button><br/>
+    <button><a href = "NewSongs.html">NewSongs</a></button><br/>
+    <div id="songs-container"></div>
+  </div>
+
+  <script>
+    const songs = [
+      {
+        title: "Bohemian Rhapsody",
+        artist: "Queen",
+        duration: "6:00",
+        genre: "Rock"
+      },
+      {
+        title: "Stairway to Heaven",
+        artist: "Led Zeppelin",
+        duration: "8:00",
+        genre: "Rock"
+      },
+      {
+        title: "Hotel California",
+        artist: "Eagles",
+        duration: "6:30",
+        genre: "Rock"
+      },
+      {
+        title: "Billie Jean",
+        artist: "Michael Jackson",
+        duration: "4:50",
+        genre: "Pop"
+      },
+      {
+        title: "Thriller",
+        artist: "Michael Jackson",
+        duration: "5:57",
+        genre: "Pop"
+      },
+      {
+        title: "Shape of You",
+        artist: "Ed Sheeran",
+        duration: "3:54",
+        genre: "Pop"
+      },
+      {
+        title: "Rolling in the Deep",
+        artist: "Adele",
+        duration: "3:49",
+        genre: "Pop"
+      },
+      {
+        title: "Despacito",
+        artist: "Luis Fonsi ft. Daddy Yankee",
+        duration: "4:42",
+        genre: "Latin Pop"
+      },
+      {
+        title: "Gangnam Style",
+        artist: "Psy",
+        duration: "4:12",
+        genre: "K-pop"
+      },
+      {
+        title: "Dynamite",
+        artist: "BTS",
+        duration: "3:19",
+        genre: "K-pop"
+      }
+    ];
+
+    const startListeningBtn = document.getElementById("start-listening-btn");
+    const songsContainer = document.getElementById("songs-container");
+
+    startListeningBtn.addEventListener("click", function() {
+      songsContainer.innerHTML = "";
+
+      for (let i = 0; i < songs.length; i++) {
+        const song = songs[i];
+        const songItem = document.createElement("div");
+        songItem.classList.add("song-item");
+
+        const songTitle = document.createElement("h2");
+        songTitle.innerText = song.title;
+
+        const songArtist = document.createElement("p");
+        songArtist.innerText = "Artist: " + song.artist;
+
+        const songDuration = document.createElement("p");
+        songDuration.innerText = "Duration: " + song.duration;
+
+        const songGenre = document.createElement("p");
+        songGenre.innerText = "Genre: " + song.genre;
+
+        songItem.appendChild(songTitle);
+        songItem.appendChild(songArtist);
+        songItem.appendChild(songDuration);
+        songItem.appendChild(songGenre);
+
+        songsContainer.appendChild(songItem);
+      }
+    });
+  </script>
+</body>
+</html>
